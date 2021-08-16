@@ -56,10 +56,10 @@ class Example(Frame):
 # 
         fou = Button(self, text="Estado puerta 1", command=lambda: event_click_status(1))
         fou.grid(row=3, column=0)
-#         fiv = Button(self)
-#         fiv.grid(row=3, column=1)
-#         six = Button(self)
-#         six.grid(row=3, column=2)
+        fiv = Button(self, text='Estado puerta 2', command=lambda: event_click_status(2))
+        fiv.grid(row=3, column=1)
+        six = Button(self, text='Estado puerta 3', command=lambda: event_click_status(3))
+        six.grid(row=3, column=2)
 #         mul = Button(self)
 #         mul.grid(row=3, column=3)
 # 
