@@ -19,7 +19,7 @@ def serial_read_qr():
     print(ser.is_open)
     print("connected to: " + ser.portstr)
     while True:
-        return ser.read(22)
+        return str(ser.read(22))
 
     
 def socket_comunication():

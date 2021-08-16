@@ -12,7 +12,7 @@ def event_click_status(number):
 
 def event_click_qr(status):
     
-        messagebox.showinfo('Message title', str(read_qr_sensor.serial_read_qr))
+        messagebox.showinfo('Message title', read_qr_sensor.serial_read_qr)
 
 
 class Example(Frame):
