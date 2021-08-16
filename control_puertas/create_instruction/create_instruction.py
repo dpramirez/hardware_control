@@ -19,7 +19,7 @@ def create():
                 "response": b"\x80\x01\x02\x11\x92",
                 "feedback_status":{
                     "open":b"\x80\x01\x02\x11\x92",
-                    "close": b"\x80\x01\x01\x00\x83"
+                    "close": b"\x80\x01\x02\x00\x83"
                 },
                 "status": b"\x80\x01\x02\x33\xb0"
             },
@@ -29,7 +29,7 @@ def create():
                 "response": b"\x80\x01\x03\x11\x93",
                 "feedback_status":{
                     "open": b"\x80\x01\x03\x11\x93",
-                    "close": b"\x80\x01\x03\x00\x83"
+                    "close": b"\x80\x01\x03\x00\x82"
                 },
                 "status": b"\x80\x01\x03\x33\xb1"
             },
@@ -47,7 +47,7 @@ def create():
                 "close": b"",
                 "feedback_status":{
                     "open":b"",
-                    "close": b"\x80\x01\x06\x00\x84"
+                    "close": b"\x80\x01\x05\x00\x84"
                 },
                 "status": b"\x80\x01\x05\x33\xb7"
             },                        
@@ -56,7 +56,7 @@ def create():
                 "close": b"",
                 "feedback_status":{
                     "open":b"",
-                    "close": b"\x80\x01\x06\x00\x83"
+                    "close": b"\x80\x01\x06\x00\x87"
                 },
                 "status": b"\x80\x01\x06\x33\xb4"
             }            
