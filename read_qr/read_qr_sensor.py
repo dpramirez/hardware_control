@@ -60,4 +60,4 @@ def socket_comunication():
             print('closing socket')
             #sock.close()
 
-serial_read_qr()            
+print(serial_read_qr())            

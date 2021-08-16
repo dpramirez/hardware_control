@@ -5,9 +5,15 @@ from control_puertas import smart_locker_control as door
 from tkinter import Tk, W, E
 from tkinter.ttk import Frame, Button, Entry, Style
 from tkinter import messagebox
+from read_qr import read_qr_sensor
 def event_click_status(number):
     
         messagebox.showinfo('Message title', door.status_door(number))
+
+def event_click_qr(number):
+    
+        messagebox.showinfo('Message title', read_qr_sensor.serial_read_qr())
+
 
 class Example(Frame):
 
@@ -73,7 +79,7 @@ class Example(Frame):
         thr.grid(row=5, column=2)
 
 
-        qr = Button(self, text="Escanear QR")
+        qr = Button(self, text="Escanear QR", command=event_click_qr)
         qr.grid(row=6, column=1)
        
         self.pack()
