@@ -72,8 +72,8 @@ class Example(Frame):
 #         mns = Button(self)
 #         mns.grid(row=4, column=3)
 # 
-#         zer = Button(self)
-#         zer.grid(row=5, column=0)
+        zer = Button(self, text="Estado de todas las puertas", command=lambda: event_click_status('all'))
+        zer.grid(row=5, column=0)
 #         dot = Button(self)
 #         dot.grid(row=5, column=1)
 #         equ = Button(self)
