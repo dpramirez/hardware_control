@@ -71,10 +71,10 @@ def status_door(number_door):
 
             
             print('byte recibido', data)
-            print('byte open', keys_instruction_board[CFG.name_board][str(number_door)]["feedback_status"]['open'])
-            if data == (keys_instruction_board[CFG.name_board][str(number_door)]["feedback_status"]['open']):
+            print('byte open', keys_instruction_board[CFG.name_board][str(iter_door)]["feedback_status"]['open'])
+            if data == (keys_instruction_board[CFG.name_board][str(iter_door)]["feedback_status"]['open']):
                 register += 'Door: %s -> State: Open;'%iter_door
-            if data == (keys_instruction_board[CFG.name_board][str(number_door)]["feedback_status"]['close']):
+            if data == (keys_instruction_board[CFG.name_board][str(iter_door)]["feedback_status"]['close']):
                 register += 'Door: %s -> State: Close;'%iter_door    
             #return data_str 
         sock.close()
