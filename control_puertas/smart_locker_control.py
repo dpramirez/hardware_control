@@ -61,7 +61,7 @@ def status_door(number_door):
 
     if number_door == 'all':
         #logger.info('Abriendo todas las puertas:')
-
+        register_dicc = {}
         register = ''
         for iter_door in range(1, CFG.doors_number+1):
             #busco la instruccion en byte de que puerta debe abrirse
@@ -87,15 +87,18 @@ def status_door(number_door):
             #print('byte open', keys_instruction_board[CFG.name_board][str(iter_door)]["feedback_status"]['open'])
             if data == (keys_instruction_board[CFG.name_board][str(iter_door)]["feedback_status"]['open']):
                 register += 'Door: %s -> State: Open\n'%iter_door
+                register_dicc[str(iter_door)] = True
                 #logger.info('  -------> Puerta: %s - Estado: Open'%(iter_door))
             if data == (keys_instruction_board[CFG.name_board][str(iter_door)]["feedback_status"]['close']):
                 register += 'Door: %s -> State: Close\n'%iter_door
+                register_dicc[str(iter_door)] = False
+
                 #logger.info('  -------> Puerta: %s - Estado: Close'%(iter_door))    
             #return data_str 
             time.sleep(0.1)
         sock.close()
         #logger.info('###############################\n# Termino de estado de puertas#\n###############################')
-        return register
+        return register, register_dicc
 
     else:
             
@@ -175,6 +178,9 @@ def open_door(number_door):
             #print(now_time)
             if now_time.total_seconds()%5>=0:
                 response = False
+        sock.close()
+        return True
+
     #print('Done')
     sock.close()
     
