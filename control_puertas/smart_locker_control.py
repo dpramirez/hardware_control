@@ -40,6 +40,74 @@ def read_instruction():
     
     return objects[0]
 
+
+
+def status_door(number_door):
+    '''
+    Esta funcion retorna el estado en el que esta la puerta determinada 
+    '''
+    sock = initial_sock()
+    keys_instruction_board = read_instruction()
+
+    if number_door == 'all':
+        register = ''
+        for iter_door in range(1, CFG.doors_number+1):
+            #busco la instruccion en byte de que puerta debe abrirse
+            instruction = (keys_instruction_board[CFG.name_board][str(iter_door)]["status"])
+            #se envia la instruccion
+            print('instriction sending ... ->: %s'%(str(instruction)))
+            sock.sendall(instruction)
+
+            star_time = datetime.now()
+            response = True
+                
+            while response:
+                now_time = datetime.now()-star_time
+                data = sock.recv(4096)
+                print("Received response:" + str(data))
+                
+                if now_time.total_seconds():
+                    response = False
+
+            
+            print('byte recibido', data)
+            print('byte open', keys_instruction_board[CFG.name_board][str(number_door)]["feedback_status"]['open'])
+            if data == (keys_instruction_board[CFG.name_board][str(number_door)]["feedback_status"]['open']):
+                register += 'Door: %s -> State: Open;'%iter_door
+            if data == (keys_instruction_board[CFG.name_board][str(number_door)]["feedback_status"]['close']):
+                register += 'Door: %s -> State: Close;'%iter_door    
+            #return data_str 
+        sock.close()
+        return register
+
+    else:
+            
+        #busco la instruccion en byte de que puerta debe abrirse
+        instruction = (keys_instruction_board[CFG.name_board][str(number_door)]["status"])
+        #se envia la instruccion
+        print('instriction sending ... ->: %s'%(str(instruction)))
+        sock.sendall(instruction)
+
+        star_time = datetime.now()
+        response = True
+            
+        while response:
+            now_time = datetime.now()-star_time
+            data = sock.recv(4096)
+            print("Received response:" + str(data))
+            
+            if now_time.total_seconds():
+                response = False
+
+        sock.close()
+        print('byte recibido', data)
+        print('byte open', keys_instruction_board[CFG.name_board][str(number_door)]["feedback_status"]['open'])
+        if data == (keys_instruction_board[CFG.name_board][str(number_door)]["feedback_status"]['open']):
+            return 'open'
+        if data == (keys_instruction_board[CFG.name_board][str(number_door)]["feedback_status"]['close']):
+            return 'close'    
+        #return data_str    
+
 def open_door(number_door):
     '''
     Funcion que abre una puerta o todas 
@@ -94,34 +162,7 @@ def open_door(number_door):
     sock.close()
     
     
-def status_door(number_door):
-    sock = initial_sock()
-    keys_instruction_board = read_instruction()
-    #busco la instruccion en byte de que puerta debe abrirse
-    instruction = (keys_instruction_board[CFG.name_board][str(number_door)]["status"])
-    #se envia la instruccion
-    print('instriction sending ... ->: %s'%(str(instruction)))
-    sock.sendall(instruction)
 
-    star_time = datetime.now()
-    response = True
-         
-    while response:
-        now_time = datetime.now()-star_time
-        data = sock.recv(4096)
-        print("Received response:" + str(data))
-        
-        if now_time.total_seconds():
-            response = False
-
-    sock.close()
-    print('byte recibido', data)
-    print('byte open', keys_instruction_board[CFG.name_board][str(number_door)]["feedback_status"]['open'])
-    if data == (keys_instruction_board[CFG.name_board][str(number_door)]["feedback_status"]['open']):
-        return 'open'
-    if data == (keys_instruction_board[CFG.name_board][str(number_door)]["feedback_status"]['close']):
-        return 'close'    
-    #return data_str
     
 
 

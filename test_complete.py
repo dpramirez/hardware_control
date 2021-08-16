@@ -90,7 +90,7 @@ def main():
     #screen_width = root.winfo_screenwidth()
     #screen_height = root.winfo_screenheight()
     #root.geometry("%sx%s"%(screen_width, screen_height))
-    root.geometry("300x300")
+    root.geometry("300x600")
     app = Example()
     root.mainloop()
 
