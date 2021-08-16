@@ -77,7 +77,7 @@ def status_door(number_door):
             if data == (keys_instruction_board[CFG.name_board][str(iter_door)]["feedback_status"]['close']):
                 register += 'Door: %s -> State: Close\n;'%iter_door    
             #return data_str 
-            time.sleep(2)
+            time.sleep(0.5)
         sock.close()
         return register
 
