@@ -12,20 +12,20 @@ def serial_read_qr():
     Conexion directa del QR a la espera 
     """
     ser = Serial(
-        port='/dev/ttyACM1',
+        port='/dev/ttyACM0',
         baudrate=9600
     )
     ser.isOpen()
     print(ser.is_open)
     print("connected to: " + ser.portstr)
     while True:
-        print(ser.read(22))
+        return ser.read(22)
 
     
 def socket_comunication():
     # configure the serial connections (the parameters differs on the device you are connecting to)
     ser = Serial(
-        port='/dev/ttyACM1',
+        port='/dev/ttyACM0',
         baudrate=9600
     )
 
