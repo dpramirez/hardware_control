@@ -105,16 +105,20 @@ def status_door(number_door):
 
     star_time = datetime.now()
     response = True
-    data_str = ''    
+         
     while response:
         now_time = datetime.now()-star_time
         data = sock.recv(4096)
         print("Received response:" + str(data))
-        data_str = str(data)
+        
         if now_time.total_seconds():
             response = False
     sock.close()
-    return data_str
+    if data == (keys_instruction_board[CFG.name_board][str(number_door)]["feedback_status"]['open']):
+        return 'open'
+    if data == (keys_instruction_board[CFG.name_board][str(number_door)]["feedback_status"]['open']):
+        return 'close'    
+    #return data_str
     
 
 
