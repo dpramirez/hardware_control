@@ -62,7 +62,7 @@ def open_door(number_door):
 
             star_time = datetime.now()
             response = True
-            response = ''    
+                
             while response:
                 now_time = datetime.now()-star_time
                 data = sock.recv(4096)
@@ -82,7 +82,7 @@ def open_door(number_door):
 
         star_time = datetime.now()
         response = True
-        response = ''    
+           
         while response:
             now_time = datetime.now()-star_time
             data = sock.recv(4096)
