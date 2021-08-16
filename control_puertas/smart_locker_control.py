@@ -119,7 +119,7 @@ def status_door(number_door):
     print('byte open', keys_instruction_board[CFG.name_board][str(number_door)]["feedback_status"]['open'])
     if data == (keys_instruction_board[CFG.name_board][str(number_door)]["feedback_status"]['open']):
         return 'open'
-    if data == (keys_instruction_board[CFG.name_board][str(number_door)]["feedback_status"]['open']):
+    if data == (keys_instruction_board[CFG.name_board][str(number_door)]["feedback_status"]['close']):
         return 'close'    
     #return data_str
     

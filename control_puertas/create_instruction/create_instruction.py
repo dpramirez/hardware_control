@@ -9,7 +9,7 @@ def create():
                 "open":b"\x8A\x01\x01\x11\x9B",
                 "response": b"\x80\x01\x01\x11\x91",
                 "feedback_status":{
-                    "open":b"\x80\x01\x01\x11\x91",
+                    "open":b"\x80\x01\x01\x00\x91",
                     "close": b"\x80\x01\x01\x00\x80"
                 },
                 "status": b"\x80\x01\x01\x33\xb3"
@@ -78,5 +78,5 @@ def byte_xor(bar1, bar2):
 
 create()
 
-number_door = b'\x06'
-print(byte_xor(byte_xor(byte_xor(b'\x80', b'\x01'), number_door), b'\x33'))
+#number_door = b'\x06'
+#print(byte_xor(byte_xor(byte_xor(b'\x80', b'\x01'), number_door), b'\x33'))
