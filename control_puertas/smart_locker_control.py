@@ -52,8 +52,8 @@ def open_door(number_door):
     
     keys_instruction_board = read_instruction()
     if number_door == 'all':
-        
-        for iter_door in range(1, 7):
+        # se abren todas las puertas del locker
+        for iter_door in range(1, CFG.doors_number+1):
             
             instruction = (keys_instruction_board[CFG.name_board][str(iter_door)]["open"])
             #se envia la instruccion
@@ -87,8 +87,8 @@ def open_door(number_door):
             now_time = datetime.now()-star_time
             data = sock.recv(4096)
             print("Received response:" + str(data))
-            
-            if now_time.total_seconds():
+            print(now_time)
+            if now_time.total_seconds()%5>=0:
                 response = False
     print('Done')
     sock.close()
