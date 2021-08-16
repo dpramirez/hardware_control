@@ -7,19 +7,20 @@ import sys
 
 
 
-def serial_read_qr():
+def serial_read_qr(status):
     """
     Conexion directa del QR a la espera 
     """
-    ser = Serial(
-        port='/dev/ttyACM0',
-        baudrate=9600
-    )
-    ser.isOpen()
-    print(ser.is_open)
-    print("connected to: " + ser.portstr)
-    while True:
-        return ser.read(22)
+    if status:
+        ser = Serial(
+            port='/dev/ttyACM0',
+            baudrate=9600
+        )
+        ser.isOpen()
+        print(ser.is_open)
+        print("connected to: " + ser.portstr)
+        while True:
+            return ser.read(22)
 
     
 def socket_comunication():

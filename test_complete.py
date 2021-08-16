@@ -10,9 +10,9 @@ def event_click_status(number):
     
         messagebox.showinfo('Message title', door.status_door(number))
 
-def event_click_qr():
+def event_click_qr(status):
     
-        messagebox.showinfo('Message title', str(read_qr_sensor.serial_read_qr()))
+        messagebox.showinfo('Message title', str(read_qr_sensor.serial_read_qr(status)))
 
 
 class Example(Frame):
@@ -79,7 +79,7 @@ class Example(Frame):
         thr.grid(row=5, column=2)
 
 
-        qr = Button(self, text="Escanear QR", command=lambda :event_click_qr)
+        qr = Button(self, text="Escanear QR", command=lambda :event_click_qr(True))
         qr.grid(row=6, column=1)
        
         self.pack()
