@@ -69,7 +69,7 @@ class Example(Frame):
 
         two = Button(self, text="Estado todas las puertas", command=lambda :event_click_status('all'))
         two.grid(row=5, column=0)
-        thr = Button(self, text="Abrir todas las puertas", command=lambda :event_click_status('all'))
+        thr = Button(self, text="Abrir todas las puertas", command=lambda :door.open_door('all'))
         thr.grid(row=5, column=2)
 
 
