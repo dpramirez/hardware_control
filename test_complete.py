@@ -22,7 +22,7 @@ class Example(Frame):
         self.master.title("Control de puertas")
 
         Style().configure("TButton", padding=(0, 7, 0, 5),
-            font='serif 10')
+            font='serif 20')
 
         self.columnconfigure(0, pad=3)
         self.columnconfigure(1, pad=3)
@@ -82,10 +82,10 @@ class Example(Frame):
 def main():
     
     root = Tk()
-    #screen_width = root.winfo_screenwidth()
-    #screen_height = root.winfo_screenheight()
-    #root.geometry("%sx%s"%(screen_width, screen_height))
-    root.geometry("300x600")
+    screen_width = root.winfo_screenwidth()
+    screen_height = root.winfo_screenheight()
+    root.geometry("%sx%s"%(screen_width, screen_height))
+    #root.geometry("300x600")
     app = Example()
     root.mainloop()
 
