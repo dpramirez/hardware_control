@@ -8,6 +8,15 @@ import pickle
 import os
 from .create_instruction import create_instruction as ci
 import time
+import logging
+logging.basicConfig( level=logging.DEBUG, filename='apertura_de_puertas.log')
+logger = logging.getLogger('ejemplo_Log')
+logger.setLevel(logging.DEBUG)
+fh = logging.FileHandler('debug.log')
+fh.setLevel(logging.DEBUG)
+logger.addHandler(fh)
+formatter = logging.Form
+
 CFG = global_config.cfg
 
 def initial_sock():
@@ -15,9 +24,12 @@ def initial_sock():
 
     # Connect the socket to the port where the server is listening
     server_address = (CFG.ip_board, CFG.port_board) #ip y puerto de la placa controladora 
-    print('connecting to %s port %s' % server_address)
+    #print('connecting to %s port %s' % server_address)
 
     sock.connect(server_address)
+
+    logger.info('Conexion completada con exito --> puerto %s y IP %s'%(CFG.port_board, CFG.ip_board))
+
     return sock
 
 def read_instruction():
@@ -31,8 +43,13 @@ def read_instruction():
 
     fileName = 'control_puertas/save.p'
     if os.path.exists(fileName):
-        print('El archivo no existe')
-    else: ci.create()   
+        #print('El archivo no existe')
+        logger.warning('El archivo con las instrucciones no existe.')
+
+    else: 
+        ci.create()
+        logger.info('Creando archivo de instrucciones')
+   
 
     objects = []
     with (open("save.p", "rb")) as openfile:
@@ -50,35 +67,41 @@ def status_door(number_door):
     keys_instruction_board = read_instruction()
 
     if number_door == 'all':
+        logger.info('Abriendo todas las puertas:')
+
         register = ''
         for iter_door in range(1, CFG.doors_number+1):
             #busco la instruccion en byte de que puerta debe abrirse
             instruction = (keys_instruction_board[CFG.name_board][str(iter_door)]["status"])
             #se envia la instruccion
-            print('instriction sending ... ->: %s'%(str(instruction)))
+            #print('instriction sending ... ->: %s'%(str(instruction)))
             sock.sendall(instruction)
-
+            logger.info('  -->Preguntando estado de puerta %s'%(iter_door))
+            logger.info('  -----> Enviando instruccion de estado %s'%(instruction))
             star_time = datetime.now()
             response = True
                 
             while response:
                 now_time = datetime.now()-star_time
                 data = sock.recv(4096)
-                print("Received response:" + str(data))
+                #print("Received response:" + str(data))
                 
                 if now_time.total_seconds():
                     response = False
 
-            
-            print('byte recibido', data)
-            print('byte open', keys_instruction_board[CFG.name_board][str(iter_door)]["feedback_status"]['open'])
+            logger.info('  -----> Respuesta de instruccion de apertura %s'%(data))
+            #print('byte recibido', data)
+            #print('byte open', keys_instruction_board[CFG.name_board][str(iter_door)]["feedback_status"]['open'])
             if data == (keys_instruction_board[CFG.name_board][str(iter_door)]["feedback_status"]['open']):
                 register += 'Door: %s -> State: Open\n'%iter_door
+                logger.info('  -------> Puerta: %s - Estado: Open'%(iter_door))
             if data == (keys_instruction_board[CFG.name_board][str(iter_door)]["feedback_status"]['close']):
-                register += 'Door: %s -> State: Close\n;'%iter_door    
+                register += 'Door: %s -> State: Close\n'%iter_door
+                logger.info('  -------> Puerta: %s - Estado: Close'%(iter_door))    
             #return data_str 
             time.sleep(0.5)
         sock.close()
+        logger.info('###############################\n# Termino de estado de puertas#\n###############################')
         return register
 
     else:
@@ -101,8 +124,8 @@ def status_door(number_door):
                 response = False
 
         sock.close()
-        print('byte recibido', data)
-        print('byte open', keys_instruction_board[CFG.name_board][str(number_door)]["feedback_status"]['open'])
+        #print('byte recibido', data)
+        #print('byte open', keys_instruction_board[CFG.name_board][str(number_door)]["feedback_status"]['open'])
         if data == (keys_instruction_board[CFG.name_board][str(number_door)]["feedback_status"]['open']):
             return 'open'
         if data == (keys_instruction_board[CFG.name_board][str(number_door)]["feedback_status"]['close']):
@@ -126,7 +149,7 @@ def open_door(number_door):
             
             instruction = (keys_instruction_board[CFG.name_board][str(iter_door)]["open"])
             #se envia la instruccion
-            print('instriction sending ... ->: %s'%(str(instruction)))
+            #print('instriction sending ... ->: %s'%(str(instruction)))
             sock.sendall(instruction)
 
             star_time = datetime.now()
@@ -135,7 +158,7 @@ def open_door(number_door):
             while response:
                 now_time = datetime.now()-star_time
                 data = sock.recv(4096)
-                print("Received response:" + str(data))
+                #print("Received response:" + str(data))
                 
                 if now_time.total_seconds():
                     response = False
@@ -146,7 +169,7 @@ def open_door(number_door):
     #busco la instruccion en byte de que puerta debe abrirse
         instruction = (keys_instruction_board[CFG.name_board][str(number_door)]["open"])
         #se envia la instruccion
-        print('instriction sending ... ->: %s'%(str(instruction)))
+        #print('instriction sending ... ->: %s'%(str(instruction)))
         sock.sendall(instruction)
 
         star_time = datetime.now()
@@ -155,11 +178,11 @@ def open_door(number_door):
         while response:
             now_time = datetime.now()-star_time
             data = sock.recv(4096)
-            print("Received response:" + str(data))
-            print(now_time)
+            #print("Received response:" + str(data))
+            #print(now_time)
             if now_time.total_seconds()%5>=0:
                 response = False
-    print('Done')
+    #print('Done')
     sock.close()
     
     
