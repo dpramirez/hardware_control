@@ -113,6 +113,7 @@ def status_door(number_door):
         
         if now_time.total_seconds():
             response = False
+            
     sock.close()
     if data == (keys_instruction_board[CFG.name_board][str(number_door)]["feedback_status"]['open']):
         return 'open'
