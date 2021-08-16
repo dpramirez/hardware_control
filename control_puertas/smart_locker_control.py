@@ -92,7 +92,7 @@ def status_door(number_door):
                 register += 'Door: %s -> State: Close\n'%iter_door
                 #logger.info('  -------> Puerta: %s - Estado: Close'%(iter_door))    
             #return data_str 
-            time.sleep(0.5)
+            time.sleep(0.1)
         sock.close()
         #logger.info('###############################\n# Termino de estado de puertas#\n###############################')
         return register
