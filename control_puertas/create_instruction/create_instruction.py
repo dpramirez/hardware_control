@@ -35,27 +35,27 @@ def create():
             },
             "4": {
                 "open":b"\x8A\x01\x04\x11\x9e",
-                "close": b"",
+                "response": b"",
                 "feedback_status":{
-                    "open":b"",
+                    "open":  b"\x80\x01\x04\x11\x94",
                     "close": b"\x80\x01\x04\x00\x85"
                 },
                 "status": b"\x80\x01\x04\x33\xb6"
             },
             "5": {
                 "open":b"\x8A\x01\x05\x11\x9f",
-                "close": b"",
+                "response": b"",
                 "feedback_status":{
-                    "open":b"",
+                    "open":  b"\x80\x01\x05\x11\x95",
                     "close": b"\x80\x01\x05\x00\x84"
                 },
                 "status": b"\x80\x01\x05\x33\xb7"
             },                        
             "6": {
                 "open":b"\x8A\x01\x06\x11\x9c",
-                "close": b"",
+                "response": b"",
                 "feedback_status":{
-                    "open":b"",
+                    "open": b"\x80\x01\x06\x11\x96",
                     "close": b"\x80\x01\x06\x00\x87"
                 },
                 "status": b"\x80\x01\x06\x33\xb4"
