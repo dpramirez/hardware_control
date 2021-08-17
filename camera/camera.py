@@ -30,7 +30,7 @@ class RTSPVideoWriterObject(object):
         self.frame_width = 640#int(self.capture.get(3))
         self.frame_height = 480#int(self.capture.get(4))
         self.fourcc = cv2.VideoWriter_fourcc(*'XVID')
-        self.output_video = cv2.VideoWriter('fileOutput.avi', self.fourcc, 20.0, (self.frame_width, self.frame_height))
+        self.output_video = cv2.VideoWriter('fileOutput.avi', cv2.VideoWriter_fourcc('M','J','P','G'), 320.0, (self.frame_width, self.frame_height))
         while True:          
             try:
                 self.output_video.write(self.frame)
