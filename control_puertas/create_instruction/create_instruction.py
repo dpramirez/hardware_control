@@ -76,6 +76,22 @@ def byte_xor(bar1, bar2):
 #number_door = b'\x06'
 #print(byte_xor(byte_xor(byte_xor(b'\x8A', b'\x01'), number_door), b'\x11'))
 
+
+def create_intruction_board_AL2445():
+    '''
+    Creacion automatica de instrucciones de la placa AL2445
+    '''
+    register_instruction = {}
+    for door in range(1, 25):
+        str(door) = {
+            "open": b"",
+            "feedback_status": {
+                "open": b""
+                },
+            "status": b""
+            }
+
+
 create()
 
 #number_door = b'\x06'
