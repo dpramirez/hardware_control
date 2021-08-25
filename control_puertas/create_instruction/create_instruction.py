@@ -199,8 +199,8 @@ def create():
 def byte_xor(bar1, bar2):
         return bytes([_a ^ _b for _a, _b in zip(bar1, bar2)])
 
-#number_door = b'\x14'
-#print(byte_xor(byte_xor(byte_xor(b'\x8A', b'\x01'), number_door), b'\x11'))
+number_door = b'\x14'
+print(byte_xor(byte_xor(byte_xor(b'\x8A', b'\x01'), number_door), b'\x11'))
 
 
 create()
