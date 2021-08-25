@@ -59,7 +59,7 @@ def create():
                     "close": b"\x80\x01\x06\x00\x87"
                 },
                 "status": b"\x80\x01\x06\x33\xb4"
-            },                        
+            }, # Desde aca los feedback no estan buenos hay que arreglarlos                       
             "7": {
                 "open":b"\x8A\x01\x07\x11\x9d",
                 "response": b"",
@@ -68,7 +68,52 @@ def create():
                     "close": b"\x80\x01\x06\x00\x87"
                 },
                 "status": b"\x80\x01\x06\x33\xb4"
-            }            
+            },                        
+            "8": {
+                "open":b"\x8A\x01\x08\x11\x92",
+                "response": b"",
+                "feedback_status":{
+                    "open": b"\x80\x01\x06\x11\x96",
+                    "close": b"\x80\x01\x06\x00\x87"
+                },
+                "status": b"\x80\x01\x06\x33\xb4"
+            },                        
+            "9": {
+                "open":b"\x8A\x01\x09\x11\x93",
+                "response": b"",
+                "feedback_status":{
+                    "open": b"\x80\x01\x06\x11\x96",
+                    "close": b"\x80\x01\x06\x00\x87"
+                },
+                "status": b"\x80\x01\x06\x33\xb4"
+            },                        
+            "10": {
+                "open":b"\x8A\x01\x0A\x11\x90",
+                "response": b"",
+                "feedback_status":{
+                    "open": b"\x80\x01\x06\x11\x96",
+                    "close": b"\x80\x01\x06\x00\x87"
+                },
+                "status": b"\x80\x01\x06\x33\xb4"
+            },                        
+            "11": {
+                "open":b"\x8A\x01\x0B\x11\x91",
+                "response": b"",
+                "feedback_status":{
+                    "open": b"\x80\x01\x06\x11\x96",
+                    "close": b"\x80\x01\x06\x00\x87"
+                },
+                "status": b"\x80\x01\x06\x33\xb4"
+            },                        
+            "12": {
+                "open":b"\x8A\x01\x0C\x11\x96",
+                "response": b"",
+                "feedback_status":{
+                    "open": b"\x80\x01\x06\x11\x96",
+                    "close": b"\x80\x01\x06\x00\x87"
+                },
+                "status": b"\x80\x01\x06\x33\xb4"
+            }                 
         }
     }
 
@@ -82,7 +127,7 @@ def create():
 def byte_xor(bar1, bar2):
         return bytes([_a ^ _b for _a, _b in zip(bar1, bar2)])
 
-number_door = b'\x07'
+number_door = b'\x0C'
 print(byte_xor(byte_xor(byte_xor(b'\x8A', b'\x01'), number_door), b'\x11'))
 
 
