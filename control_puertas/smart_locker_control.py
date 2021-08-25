@@ -184,9 +184,7 @@ def open_door(number_door):
     #print('Done')
     sock.close()
     
-    
 
-    
 
 
 

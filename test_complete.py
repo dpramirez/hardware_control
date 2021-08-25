@@ -5,14 +5,15 @@ from control_puertas import smart_locker_control as door
 from tkinter import Tk, W, E
 from tkinter.ttk import Frame, Button, Entry, Style
 from tkinter import messagebox
-from read_qr import read_qr_sensor
+#from read_qr import read_qr_sensor
+
 def event_click_status(number):
     
         messagebox.showinfo('Message title', door.status_door(number))
 
 def event_click_qr():
     
-        messagebox.showinfo('Message title', read_qr_sensor.serial_read_qr())
+        messagebox.showinfo('Message title', 'Text')#read_qr_sensor.serial_read_qr())
 
 
 class Example(Frame):

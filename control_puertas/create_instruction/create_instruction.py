@@ -59,6 +59,15 @@ def create():
                     "close": b"\x80\x01\x06\x00\x87"
                 },
                 "status": b"\x80\x01\x06\x33\xb4"
+            },                        
+            "7": {
+                "open":b"\x8A\x01\x07\x11\x9d",
+                "response": b"",
+                "feedback_status":{
+                    "open": b"\x80\x01\x06\x11\x96",
+                    "close": b"\x80\x01\x06\x00\x87"
+                },
+                "status": b"\x80\x01\x06\x33\xb4"
             }            
         }
     }
@@ -73,8 +82,8 @@ def create():
 def byte_xor(bar1, bar2):
         return bytes([_a ^ _b for _a, _b in zip(bar1, bar2)])
 
-#number_door = b'\x06'
-#print(byte_xor(byte_xor(byte_xor(b'\x8A', b'\x01'), number_door), b'\x11'))
+number_door = b'\x07'
+print(byte_xor(byte_xor(byte_xor(b'\x8A', b'\x01'), number_door), b'\x11'))
 
 
 create()
