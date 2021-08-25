@@ -120,8 +120,8 @@ def status_door(number_door):
                 response = False
 
         sock.close()
-        #print('byte recibido', data)
-        #print('byte open', keys_instruction_board[CFG.name_board][str(number_door)]["feedback_status"]['open'])
+        print('byte recibido', data)
+        print('byte open', keys_instruction_board[CFG.name_board][str(number_door)]["feedback_status"]['open'])
         if data == (keys_instruction_board[CFG.name_board][str(number_door)]["feedback_status"]['open']):
             return True
         if data == (keys_instruction_board[CFG.name_board][str(number_door)]["feedback_status"]['close']):
