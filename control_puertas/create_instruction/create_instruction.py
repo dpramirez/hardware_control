@@ -113,7 +113,79 @@ def create():
                     "close": b"\x80\x01\x06\x00\x87"
                 },
                 "status": b"\x80\x01\x06\x33\xb4"
-            }                 
+            },                        
+            "13": {
+                "open":b"\x8A\x01\x0D\x11\x97",
+                "response": b"",
+                "feedback_status":{
+                    "open": b"\x80\x01\x06\x11\x96",
+                    "close": b"\x80\x01\x06\x00\x87"
+                },
+                "status": b"\x80\x01\x06\x33\xb4"
+            },                        
+            "14": {
+                "open":b"\x8A\x01\x0E\x11\x94",
+                "response": b"",
+                "feedback_status":{
+                    "open": b"\x80\x01\x06\x11\x96",
+                    "close": b"\x80\x01\x06\x00\x87"
+                },
+                "status": b"\x80\x01\x06\x33\xb4"
+            },                        
+            "15": {
+                "open":b"\x8A\x01\x0F\x11\x95",
+                "response": b"",
+                "feedback_status":{
+                    "open": b"\x80\x01\x06\x11\x96",
+                    "close": b"\x80\x01\x06\x00\x87"
+                },
+                "status": b"\x80\x01\x06\x33\xb4"
+            },                        
+            "16": {
+                "open":b"\x8A\x01\x10\x11\x8A",
+                "response": b"",
+                "feedback_status":{
+                    "open": b"\x80\x01\x06\x11\x96",
+                    "close": b"\x80\x01\x06\x00\x87"
+                },
+                "status": b"\x80\x01\x06\x33\xb4"
+            },                        
+            "17": {
+                "open":b"\x8A\x01\x11\x11\x8b",
+                "response": b"",
+                "feedback_status":{
+                    "open": b"\x80\x01\x06\x11\x96",
+                    "close": b"\x80\x01\x06\x00\x87"
+                },
+                "status": b"\x80\x01\x06\x33\xb4"
+            },                        
+            "18": {
+                "open":b"\x8A\x01\x12\x11\x88",
+                "response": b"",
+                "feedback_status":{
+                    "open": b"\x80\x01\x06\x11\x96",
+                    "close": b"\x80\x01\x06\x00\x87"
+                },
+                "status": b"\x80\x01\x06\x33\xb4"
+            },                        
+            "19": {
+                "open":b"\x8A\x01\x13\x11\x89",
+                "response": b"",
+                "feedback_status":{
+                    "open": b"\x80\x01\x06\x11\x96",
+                    "close": b"\x80\x01\x06\x00\x87"
+                },
+                "status": b"\x80\x01\x06\x33\xb4"
+            },                        
+            "20": {
+                "open":b"\x8A\x01\x14\x11\x8e",
+                "response": b"",
+                "feedback_status":{
+                    "open": b"\x80\x01\x06\x11\x96",
+                    "close": b"\x80\x01\x06\x00\x87"
+                },
+                "status": b"\x80\x01\x06\x33\xb4"
+            }                         
         }
     }
 
@@ -127,8 +199,8 @@ def create():
 def byte_xor(bar1, bar2):
         return bytes([_a ^ _b for _a, _b in zip(bar1, bar2)])
 
-number_door = b'\x0C'
-print(byte_xor(byte_xor(byte_xor(b'\x8A', b'\x01'), number_door), b'\x11'))
+#number_door = b'\x14'
+#print(byte_xor(byte_xor(byte_xor(b'\x8A', b'\x01'), number_door), b'\x11'))
 
 
 create()
