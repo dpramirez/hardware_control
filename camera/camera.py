@@ -18,6 +18,9 @@ class RTSPVideoWriterObject(object):
         self.thread.start()
         self.endRec = False
 
+    def update_record(self, state):
+        self.endRec = state
+
     def update(self):
         # Read the next frame from the stream in a different thread
         while True:
@@ -34,17 +37,18 @@ class RTSPVideoWriterObject(object):
         self.frame_width = 640#int(self.capture.get(3))
         self.frame_height = 480#int(self.capture.get(4))
         self.fourcc = cv2.VideoWriter_fourcc(*'XVID')
-        self.output_video = cv2.VideoWriter('fileOutput.avi', cv2.VideoWriter_fourcc('M','J','P','G'), 320.0, (self.frame_width, self.frame_height))
+        self.output_video = cv2.VideoWriter('fileOutput.avi', cv2.VideoWriter_fourcc('M','J','P','G'), 340.0, (self.frame_width, self.frame_height))
         while True:          
             try:
                 self.output_video.write(self.frame)
                 #print(endRec)
-                if endRec:
+                if self.endRec:
                     self.endRecord()
             except AttributeError:
                 pass
 
-    
+
+
 
 
  

@@ -19,7 +19,7 @@ def serial_read_qr():
     print(ser.is_open)
     print("connected to: " + ser.portstr)
     while True:
-        return str(ser.read(22))
+        return str(ser.read(14).decode("utf-8"))
 
     
 def socket_comunication():
@@ -60,4 +60,4 @@ def socket_comunication():
             print('closing socket')
             #sock.close()
 
-          
+serial_read_qr()
